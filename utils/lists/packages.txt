@@ -1,2 +1,2 @@
-figlet
-lolcat
+screen
+htop

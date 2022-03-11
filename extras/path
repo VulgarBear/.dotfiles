@@ -1,0 +1,5 @@
+
+# Script Installed Paths
+
+export PATH="bin/:$PATH"
+export PATH="bin/python_env/:$PATH"

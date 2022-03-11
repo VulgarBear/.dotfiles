@@ -9,7 +9,7 @@ DOTFILES="$HOME/.dotfiles"
 DOTFILES_UTILS="${DOTFILES}/utils"
 DOTFILES_LISTS="${DOTFILES_UTILS}/lists"
 
-LOGFILE='fresh-install-log'
+LOGFILE='install-log'
 
 dest="${HOME}/${1}"
 old=".OLD"
@@ -53,16 +53,46 @@ function install_packages() {
 		if ! dpkg-query -W -f='${Status} ${Version}\n' dos2unix | grep "^install ok" >/dev/null; then
 			c_install "Installing package dos2unix for formating "
 			sudo apt -y install dos2unix
-			dos2unix ${DOTFILES_LISTS}/packages.txt
-			c_success "packages.txt file formatted"
+			dos2unix -q ${DOTFILES_LISTS}/packages.txt
+			c_info "packages.txt file formatted"
 		else
-			dos2unix ${DOTFILES_LISTS}/packages.txt
-			c_success "packages.txt file formatted"
+			dos2unix -q ${DOTFILES_LISTS}/packages.txt
+			c_info "packages.txt file formatted"
 		fi
 	fi
 	##	Looks for a list of default packages to install
 	if [ -f "${DOTFILES_LISTS}/packages.txt" ]; then
 		for i in $(cat ${DOTFILES_LISTS}/packages.txt); do
+			if ! dpkg-query -W -f='${Status} ${Version}\n' ${i} | grep "^install ok" >/dev/null; then
+				c_install "Installing package ${i} "
+				sudo apt -y install ${i}
+			else
+				c_success "Package ${i} is already installed. Skipping..."
+			fi
+		done
+	else
+		c_error "No Packages file found. Skipping package installation..."
+	fi
+}
+
+# Install Dev Packages
+function install_dev_packages() {
+	## Install dos2unix and use to fix any formatting issues
+	if [ -f "${DOTFILES_LISTS}/dev_packages.txt" ]; then
+		c_success "Found Packages list. Installing..."
+		if ! dpkg-query -W -f='${Status} ${Version}\n' dos2unix | grep "^install ok" >/dev/null; then
+			c_install "Installing package dos2unix for formating "
+			sudo apt -y install dos2unix
+			dos2unix -q ${DOTFILES_LISTS}/dev_packages.txt
+			c_info "dev_packages.txt file formatted"
+		else
+			dos2unix -q ${DOTFILES_LISTS}/dev_packages.txt
+			c_info "dev_packages.txt file formatted"
+		fi
+	fi
+	##	Looks for a list of default packages to install
+	if [ -f "${DOTFILES_LISTS}/dev_packages.txt" ]; then
+		for i in $(cat ${DOTFILES_LISTS}/dev_packages.txt); do
 			if ! dpkg-query -W -f='${Status} ${Version}\n' ${i} | grep "^install ok" >/dev/null; then
 				c_install "Installing package ${i} "
 				sudo apt -y install ${i}
@@ -96,37 +126,5 @@ function install_node() {
 	fi
 
 	nvm install --lts
-	nvm install node
 	nvm use --lts
-}
-
-# Create symlinks
-function link_dotfiles() {
-	dest="${HOME}/${1}"
-	dateStr=$(date +%Y-%m-%d-%H%M)
-	backup="."
-
-	cd ~/.dotfiles/src/
-
-	dotfilesDir=$(pwd)
-
-	if [ -h ~/${1} ]; then
-		# Existing symlink
-		c_warning "Removing existing symlink: ${dest}"
-		rm ${dest}
-
-	elif [ -f "${dest}" ]; then
-		# Existing file
-		c_info "Backing up existing file: ${dest}"
-		mv ${dest}{,.${dateStr}}
-
-	elif [ -d "${dest}" ]; then
-		# Existing dir
-		c_info "Backing up existing dir: ${dest}"
-		mv ${dest}{,.${dateStr}}
-	fi
-
-	c_info "Creating new symlink: ${dest}"
-	ln -s ${dotfilesDir}/${1} ${dest}
-	c_success "New symlink created: ${dest}"
 }
