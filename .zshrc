@@ -110,6 +110,7 @@ alias cls='clear'
 alias zshrl='omz reload'
 alias docker-compose='docker compose'
 alias shellrl='source ~/.zshrc'
+alias fvttrl='pm2 restart'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
