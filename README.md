@@ -1,1 +1,6 @@
-Personal DOTFILES
+# DotFiles
+## My Personal DotFiles for Local and Remote Servers
+---
+## Requirements
+- zsh
+- stow
