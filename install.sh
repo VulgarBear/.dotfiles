@@ -11,12 +11,12 @@ trap trapper ERR
 # Installing Packages
 ## Update
 sudo apt update
-sudo add-apt-repository ppa:zhangsongcui3371/fastfetch
+sudo add-apt-repository ppa:zhangsongcui3371/fastfetch -y
 sudo apt update
 ## Install Nala
 sudo apt install nala -y
 
 ## Install packages
-sudo nala install $(< .package.list)
+sudo nala install $(< package.list) -y
 
 exit
