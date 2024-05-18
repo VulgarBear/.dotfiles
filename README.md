@@ -9,3 +9,4 @@
 - zsh
 - git
 - stow
+- tmux
