@@ -8,15 +8,25 @@ traperr() {
 set -o errtrace
 trap trapper ERR
 
-# Installing Packages
+# Installing Packages and required items
 ## Update
 sudo apt update
 sudo add-apt-repository ppa:zhangsongcui3371/fastfetch -y
 sudo apt update
+
 ## Install Nala
 sudo apt install nala -y
 
 ## Install packages
 sudo nala install $(< package.list) -y
+
+## Git Clone
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Move Configs
+stow .
+
+# Complete
+fastfetch
 
 exit
