@@ -55,3 +55,4 @@ alias ls='ls --color'
 alias vim="nvim"
 alias cls="clear"
 alias docker-compose="docker compose"
+alias reload="source ~/.zshrc"
