@@ -26,6 +26,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Move Configs
 stow .
 
+# Reload Shell
+source ~/.zshrc
+
 # Complete
 fastfetch
 
