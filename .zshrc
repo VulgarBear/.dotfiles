@@ -56,6 +56,8 @@ alias vim="nvim"
 alias cls="clear"
 alias docker-compose="docker compose"
 alias reload="source ~/.zshrc"
+alias pbcopy="xsel --input --clipboard"
+alias pbpaste="xsel --output --clipboard"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
