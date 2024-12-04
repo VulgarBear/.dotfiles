@@ -23,6 +23,9 @@ sudo nala install $(< package.list) -y
 ## Git Clone
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+# Install Zoxide
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+
 # Move Configs
 stow .
 
