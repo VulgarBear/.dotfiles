@@ -52,6 +52,7 @@ setopt hist_find_no_dups
 
 # Aliases
 alias ls='ls --color'
+alias cd="z"
 alias vim="nvim"
 alias cls="clear"
 alias docker-compose="docker compose"
