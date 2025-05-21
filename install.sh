@@ -27,6 +27,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 sudo mv ~/.local/bin/zoxide /usr/local/bin/
 
+# Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # Move Configs
 stow .
 
@@ -37,6 +40,7 @@ sudo chmod +x dysk
 
 # Reload Shell
 source ~/.zshrc
+exec zsh
 
 # Complete
 fastfetch
