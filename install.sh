@@ -25,6 +25,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Install Zoxide
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+sudo mv ~/.local/bin/zoxide /usr/local/bin/
 
 # Move Configs
 stow .
