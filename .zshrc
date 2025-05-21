@@ -60,6 +60,18 @@ alias pbcopy="xsel --input --clipboard"
 alias pbpaste="xsel --output --clipboard"
 alias reload="source ~/.zshrc"
 
+# Git Aliases
+alias gs="git status --short"
+alias gd="git diff"
+alias ga="git add"
+alias gc="git commit"
+alias gp="git push"
+alias gu="git pull"
+alias gl="git log"
+alias gb="git branch"
+alias gi="git init"
+alias gcl="git clone"
+
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

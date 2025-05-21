@@ -29,6 +29,11 @@ curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh 
 # Move Configs
 stow .
 
+# Install Dysk
+cd /usr/local/bin
+sudo wget https://dystroy.org/dysk/download/x86_64-linux/dysk
+sudo chmod +x dysk
+
 # Reload Shell
 source ~/.zshrc
 
