@@ -37,6 +37,7 @@ stow .
 cd /usr/local/bin
 sudo wget https://dystroy.org/dysk/download/x86_64-linux/dysk
 sudo chmod +x dysk
+cd ~/.dotfiles
 
 # Install Node Version Manager
 curl -o- https://fnm.vercel.app/install | bash
@@ -44,8 +45,5 @@ curl -o- https://fnm.vercel.app/install | bash
 # Reload Shell
 source ~/.zshrc
 exec zsh
-
-# Complete
-fastfetch
 
 exit

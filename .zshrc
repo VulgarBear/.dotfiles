@@ -56,3 +56,10 @@ alias gcl="git clone" # This loads nvm bash_completion
 
 # Zoxide
 eval "$(zoxide init zsh)"
+
+# FNM
+FNM_PATH="/home/vulgarbear/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/vulgarbear/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
