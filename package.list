@@ -5,3 +5,6 @@ git
 fastfetch
 tmux
 xsel
+ncdu
+duf
+exa
